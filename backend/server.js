@@ -24,9 +24,32 @@ if (!fs.existsSync(uploadsDir)) {
 // Connect to Database
 connectDB();
 
-// Middleware
+const allowedOrigins = [
+  'http://localhost:5173',
+  'http://localhost:5174',
+  'http://localhost:3000',
+  'https://remarkable-mandazi-aa142f.netlify.app'
+];
+
+if (process.env.FRONTEND_URL) {
+  const formattedUrl = process.env.FRONTEND_URL.trim().replace(/\/$/, "");
+  if (!allowedOrigins.includes(formattedUrl)) {
+    allowedOrigins.push(formattedUrl);
+  }
+}
+
 app.use(cors({
-  origin: ['http://localhost:5173', 'http://localhost:5174', 'http://localhost:3000', process.env.FRONTEND_URL],
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+    
+    if (allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      console.log('🚫 CORS blocked for origin:', origin);
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true
 }));
 app.use(express.json({ limit: '50mb' }));
