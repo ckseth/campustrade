@@ -26,7 +26,7 @@ const PasswordStrengthIndicator = ({ strength }) => {
         <div className={`h-1 flex-1 rounded-full ${['strong', 'medium'].includes(strength) ? colors[strength] : 'bg-gray-200'}`} />
         <div className={`h-1 flex-1 rounded-full ${strength === 'strong' ? colors[strength] : 'bg-gray-200'}`} />
       </div>
-      {strength !== 'none' && <p className="text-xs font-bold text-slate-500 dark:text-slate-400">{labels[strength]}</p>}
+      {strength !== 'none' && <p className="text-xs font-black uppercase tracking-widest text-slate-600 dark:text-emerald-400 mt-1">{labels[strength]}</p>}
     </div>
   );
 };
@@ -34,7 +34,7 @@ const PasswordStrengthIndicator = ({ strength }) => {
 const InputField = ({ label, name, type, placeholder, value, error, isValid, showError, icon: Icon, children, onChange, onBlur }) => {
   return (
     <div className="group">
-      <label className="block text-xs font-black uppercase tracking-widest text-slate-400 mb-2 ml-1 flex items-center justify-between">
+      <label className="block text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 dark:text-slate-300 mb-2 ml-1 flex items-center justify-between">
         {label}
         {showError && isValid && <CheckCircle className="w-4 h-4 text-green-500" />}
       </label>
@@ -45,12 +45,12 @@ const InputField = ({ label, name, type, placeholder, value, error, isValid, sho
           type={type}
           required
           placeholder={placeholder}
-          className={`w-full pl-14 pr-6 py-4 rounded-2xl bg-white/50 border transition-all outline-none shadow-sm placeholder:text-slate-300 focus:bg-white focus:ring-4 ${
+          className={`w-full pl-14 pr-6 py-4 rounded-2xl bg-white/40 dark:bg-black/20 backdrop-blur-md border transition-all outline-none shadow-sm placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:bg-white dark:focus:bg-slate-900 focus:ring-4 text-slate-900 dark:text-white font-bold ${
             showError
               ? isValid
                 ? 'border-green-500 focus:ring-green-500/10 focus:border-green-600'
                 : 'border-red-500 focus:ring-red-500/10 focus:border-red-600'
-              : 'border-slate-200 focus:ring-emerald-500/10 focus:border-emerald-600'
+              : 'border-white/40 dark:border-white/10 focus:ring-emerald-500/10 focus:border-emerald-600'
           }`}
           value={value}
           onChange={onChange}
@@ -168,8 +168,8 @@ const SignupPage = () => {
           >
             <div className="mb-8">
               <h1 className="text-4xl font-black text-slate-900 dark:text-white mb-2 tracking-tight">New Account</h1>
-              <p className="text-slate-500 dark:text-slate-400 font-medium">
-                Part of the trade yet? <Link to="/login" className="text-emerald-700 font-bold hover:underline transition-all">Sign in here</Link>
+              <p className="text-slate-600 dark:text-slate-200 font-semibold">
+                Part of the community yet? <Link to="/login" className="text-emerald-700 dark:text-emerald-400 font-black hover:underline transition-all">Sign in here</Link>
               </p>
             </div>
 
@@ -204,7 +204,7 @@ const SignupPage = () => {
                 />
 
                 <div>
-                  <label className="block text-xs font-black uppercase tracking-widest text-slate-400 mb-2 ml-1">Password</label>
+                  <label className="block text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 dark:text-slate-300 mb-2 ml-1">Password</label>
                   <div className="space-y-3">
                     <div className="relative group">
                       <Lock className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 group-focus-within:text-emerald-600 transition-colors" />
@@ -213,12 +213,12 @@ const SignupPage = () => {
                         type={showPassword ? "text" : "password"}
                         required
                         placeholder="••••••••"
-                        className={`w-full pl-14 pr-14 py-4 rounded-2xl bg-white/50 border transition-all outline-none shadow-sm placeholder:text-slate-300 focus:bg-white focus:ring-4 ${
+                        className={`w-full pl-14 pr-14 py-4 rounded-2xl bg-white/40 dark:bg-black/20 backdrop-blur-md border transition-all outline-none shadow-sm placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:bg-white dark:focus:bg-slate-900 focus:ring-4 text-slate-900 dark:text-white font-bold ${
                           touched.password
                             ? validations.password.isValid
                               ? 'border-green-500 focus:ring-green-500/10 focus:border-green-600'
                               : 'border-red-500 focus:ring-red-500/10 focus:border-red-600'
-                            : 'border-slate-200 focus:ring-emerald-500/10 focus:border-emerald-600'
+                            : 'border-white/40 dark:border-white/10 focus:ring-emerald-500/10 focus:border-emerald-600'
                         }`}
                         value={formData.password}
                         onChange={handleChange}

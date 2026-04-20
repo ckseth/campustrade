@@ -36,11 +36,22 @@ const ProductCard = ({ id, name, price, description, image, availability, rentDa
   const getImageSrc = () => {
     if (imgError) return getCategoryFallbackImage(category);
     if (!image) return getCategoryFallbackImage(category);
-    // Vite-resolved module (imported images become URLs after build)
+    
+    // Vite-resolved module or local assets
     if (typeof image === 'object' || (typeof image === 'string' && image.includes('/assets/'))) return image;
+    
+    // Full URLs (Cloudinary, S3, etc.)
     if (typeof image === 'string' && image.startsWith('http')) return image;
+    
+    // Base64 or Blobs
     if (typeof image === 'string' && (image.startsWith('data:') || image.startsWith('blob:'))) return image;
-    if (typeof image === 'string' && image.startsWith('/uploads')) return `${API_BASE}${image}`;
+    
+    // Server uploads (Handle both /uploads and uploads/ formats)
+    if (typeof image === 'string') {
+      if (image.startsWith('/uploads')) return `${API_BASE}${image}`;
+      if (image.startsWith('uploads/')) return `${API_BASE}/${image}`;
+    }
+    
     return image;
   };
 
