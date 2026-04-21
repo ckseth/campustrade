@@ -25,6 +25,15 @@
     border: 1px solid #c5c5c5;
     border-radius:4px;
     outline-color:tomato;
+    background-color: white;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+.dark .placeorder-left input {
+    background-color: #1e293b;
+    border-color: #334155;
+    color: #f8fafc;
 }
 
 .placeorder-left .multi-field{

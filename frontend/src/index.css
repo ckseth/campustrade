@@ -43,6 +43,10 @@
     color: var(--text-main);
     font-family: 'Inter', 'Poppins', system-ui, -apple-system, sans-serif;
   }
+
+  input, textarea, select {
+    @apply dark:text-white dark:placeholder:text-slate-500;
+  }
 }
 
 @layer components {
@@ -122,12 +126,14 @@
    * Inputs & Forms 
    */
   .input-field {
-    @apply w-full px-5 py-3.5 rounded-2xl bg-white/70 dark:bg-slate-900/80 border border-[#f88379]/20 transition-all duration-300 focus:ring-4 focus:ring-[#f88379]/30 focus:border-[#f88379] outline-none placeholder:text-[#b36a5e]/50 backdrop-blur-[12px] text-[#4a3b39];
+    @apply w-full px-5 py-3.5 rounded-2xl bg-white/70 backdrop-blur-[12px] border border-[#f88379]/20 transition-all duration-300 focus:ring-4 focus:ring-[#f88379]/30 focus:border-[#f88379] outline-none text-[#4a3b39] font-medium placeholder:text-[#b36a5e]/50;
+    @apply dark:bg-slate-900/80 dark:border-white/10 dark:text-white dark:placeholder:text-slate-500/80;
   }
 
   .input-field:hover {
     border-color: rgba(248, 131, 121, 0.5);
     background: rgba(255, 255, 255, 0.9);
+    @apply dark:bg-slate-800/90 dark:border-white/20;
   }
 
   /* 

@@ -63,7 +63,7 @@ const ForgotPass = () => {
                         type="email"
                         required
                         placeholder="example@gmail.com"
-                        className="w-full pl-12 pr-5 py-4 rounded-xl border border-slate-200 focus:ring-4 focus:ring-[#1a3a32]/10 focus:border-[#1a3a32] outline-none transition-all placeholder:text-slate-300"
+                        className="input-field pl-12"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                       />

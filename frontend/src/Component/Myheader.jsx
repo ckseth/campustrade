@@ -64,7 +64,7 @@ const Myheader = ({ applyFilters, filters, setFilters }) => {
                 value={filters?.search || ''}
                 onChange={(e) => setFilters({ ...filters, search: e.target.value })}
                 onKeyDown={(e) => e.key === 'Enter' && applyFilters()}
-                className="w-full pl-16 pr-32 h-16 bg-white/90 backdrop-blur-xl border border-slate-200 rounded-3xl shadow-2xl shadow-indigo-500/10 focus:ring-4 focus:ring-indigo-500/5 focus:border-indigo-400 outline-none text-lg transition-all hover:bg-white"
+                className="w-full pl-16 pr-32 h-16 bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl border border-slate-200 dark:border-white/10 rounded-3xl shadow-2xl shadow-indigo-500/10 focus:ring-4 focus:ring-indigo-500/5 focus:border-indigo-400 dark:focus:border-indigo-500 outline-none text-lg transition-all hover:bg-white dark:hover:bg-slate-800 dark:text-white dark:placeholder:text-slate-500"
               />
               <button
                 onClick={applyFilters}
